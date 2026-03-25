@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support Chat</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0f1419;
+        --panel: #1a2332;
+        --text: #e8eef7;
+        --muted: #9fb0c8;
+        --accent: #5b9cff;
+        --border: #2a3a52;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: radial-gradient(1200px 600px at 20% 0%, #1e2a3f, var(--bg));
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1rem 3rem;
+      }
+      h1 {
+        font-size: 1.35rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem;
+      }
+      p.lead {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 420px;
+      }
+      .messages {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .bubble {
+        max-width: 92%;
+        padding: 0.65rem 0.85rem;
+        border-radius: 12px;
+        line-height: 1.45;
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+      }
+      .bubble.user {
+        align-self: flex-end;
+        background: #24324a;
+        border: 1px solid var(--border);
+      }
+      .bubble.bot {
+        align-self: flex-start;
+        background: #182233;
+        border: 1px solid #2a3f66;
+      }
+      .composer {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        border-top: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.2);
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: #121a26;
+        color: var(--text);
+        font-size: 1rem;
+      }
+      button {
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        border: none;
+        background: var(--accent);
+        color: #0b1220;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1 id="pageTitle">Support</h1>
+      <p class="lead" id="pageLead">
+        Chat in English, Hindi, or Hinglish. Answers use the product knowledge base.
+      </p>
+      <div class="panel">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form class="composer" id="form">
+          <input id="message" type="text" autocomplete="off" placeholder="Message…" required />
+          <button type="submit" id="send">Send</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const messages = document.getElementById("messages");
+      const form = document.getElementById("form");
+      const input = document.getElementById("message");
+      const send = document.getElementById("send");
+      const pageTitle = document.getElementById("pageTitle");
+      const pageLead = document.getElementById("pageLead");
+
+      function addBubble(text, role) {
+        const div = document.createElement("div");
+        div.className = "bubble " + (role === "user" ? "user" : "bot");
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const message = input.value.trim();
+        if (!message) return;
+        addBubble(message, "user");
+        input.value = "";
+        send.disabled = true;
+        try {
+          const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message }),
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            addBubble("Error: " + (data.error || res.status), "bot");
+            return;
+          }
+          addBubble(data.reply || "", "bot");
+        } catch (err) {
+          addBubble("Network error.", "bot");
+        } finally {
+          send.disabled = false;
+          input.focus();
+        }
+      });
+
+      (async function init() {
+        let welcome =
+          "Hi — I'm here to help. Ask me anything about the app in the language you prefer.";
+        try {
+          const r = await fetch("/api/config");
+          if (r.ok) {
+            const c = await r.json();
+            const n = c.chatbotName || "Assistant";
+            const a = c.applicationName || "the app";
+            pageTitle.textContent = n + " · " + a;
+            pageLead.textContent =
+              "Chat in English, Hindi, or Hinglish. Answers use the knowledge you maintain for " +
+              a +
+              ".";
+            welcome =
+              "Hi — I'm " +
+              n +
+              ". I can help with questions about " +
+              a +
+              ". Just type your message.";
+          }
+        } catch (_) {}
+        addBubble(welcome, "bot");
+        input.focus();
+      })();
+    </script>
+  </body>
+</html>
