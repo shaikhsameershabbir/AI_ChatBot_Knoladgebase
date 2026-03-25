@@ -45,6 +45,14 @@ export const config = {
   },
 
   cacheTtlSeconds: num(process.env.CACHE_TTL_SECONDS, 86400),
-  ragTopK: num(process.env.RAG_TOP_K, 5),
+  ragTopK: num(process.env.RAG_TOP_K, 8),
   embeddingModel: process.env.EMBEDDING_MODEL || "Xenova/all-MiniLM-L6-v2",
+
+  /**
+   * When true (default): reply is built only from retrieved knowledge text — no LLM paraphrase.
+   * Set RAG_STRICT_EXCERPT=false to allow the LLM to synthesize from snippets (may add generic details).
+   */
+  ragStrictExcerpt: !["false", "0", "no"].includes(
+    String(process.env.RAG_STRICT_EXCERPT ?? "true").toLowerCase(),
+  ),
 };

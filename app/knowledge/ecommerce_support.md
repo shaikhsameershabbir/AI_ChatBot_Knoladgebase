@@ -1,157 +1,163 @@
-![1774414917314](image/ecommerce_support/1774414917314.png)
+# Fansplay — Fantasy Sport App
 
-# ShopNest — Customer help & support (e‑commerce)
+**FansPlay** is a decentralized fantasy and prediction market platform. Users create teams, join contests, and earn rewards using USDT (BEP-20) on the Binance Smart Chain (BSC).
 
-**ShopNest** is our online shopping app and website. We sell fashion, electronics, home essentials, and daily needs from verified sellers across India. This document is the **official support reference** for common customer questions.
+🌐 Website: www.fansplay.fun
 
-> **Assistant note:** Answer using only what appears here. If a detail is not listed, say the customer should check the latest info in the app or contact support.
-
----
-
-## Account, login, and security
-
-You need a ShopNest account to place orders. Sign up with **mobile number** or **email**, then verify with OTP.
-
-**Forgot password:** Use **Forgot password** on the login screen. We send a reset link or OTP to your registered email or phone. The link expires in **15 minutes**.
-
-**Change phone or email:** Go to **Profile → Account details**. You may need to verify the new contact with OTP. For security, some changes are limited if you have open pay-later or wallet balances.
-
-**Logout everywhere:** **Profile → Security → Sign out of all devices** (if available in your app version).
-
-**Suspicious activity:** If you see orders you did not place, change your password immediately and use **Help → Report a problem** with order IDs if any.
+> **Assistant note:** Answer using only what appears here. If a detail is not listed, tell the user to check the latest info in the app or contact support.
 
 ---
 
-## Browsing, search, and product pages
+## What Makes FansPlay Different
 
-Use **Search** or **Categories** to find products. Filters (price, brand, rating, delivery speed) help narrow results.
-
-**Product details** show price (inclusive of applicable taxes where shown), seller name, estimated delivery date, return policy for that category, and customer reviews.
-
-**Out of stock:** You can tap **Notify me** if the option appears; we alert you when the item is back.
-
-**Deals and coupons:** Valid coupons apply at checkout. Each coupon has rules (minimum order value, category, expiry). Only one bank/wallet offer may apply per order where the app allows.
+- Crypto-based rewards using USDT instead of traditional currency
+- Fast withdrawals — usually processed in minutes, not days
+- Transparent and system-driven gameplay
+- Lower platform fees compared to traditional platforms
+- Globally accessible to users worldwide
 
 ---
 
-## Cart and checkout
+## Is FansPlay Legal?
 
-**Cart:** The cart is **created by Smasher**. It holds your items until you checkout or remove them. Prices can change until payment is confirmed.
-
-**Address:** Add or pick a delivery address. Pincode serviceability is checked automatically. Wrong pincode may show **Delivery not available** — correct the address or try another pincode.
-
-**Payment options** (availability depends on your account and region):
-
-- **UPI** (Google Pay, PhonePe, Paytm, etc.)
-- **Debit / credit cards**
-- **Net banking**
-- **Wallets** linked in the app
-- **Cash on delivery (COD)** — where offered; a small platform fee may apply on COD as shown before you pay
-- **EMI / pay later** — subject to partner approval at checkout
-
-**Failed payment:** Money is not taken for a failed transaction. If your bank shows a hold, it usually reverses in **3–7 business days** per bank rules. For duplicate charges, share the bank/UPI reference from your statement via **Order help**.
+FansPlay operates as a skill-based platform. Users are responsible for complying with their local regulations.
 
 ---
 
-## Orders: place, confirm, and invoice
 
-After successful payment, you see **Order confirmed** with an **order ID** (e.g. `SN-7K2M9P`). A confirmation goes to your registered email/SMS.
+## Account, Login & Security
 
-**Invoice / GST invoice:** For eligible orders, open **My orders → Order details → Download invoice** when available. Business customers should ensure GSTIN is saved in **Profile** before ordering if required.
+### How do I create an account?
 
-**Order under processing:** We pack and hand over to the courier. Status updates appear in **My orders**.
+1. Visit www.fansplay.fun
+2. Click on **Sign Up**
+3. Register using Email, Twitter, or Discord
+4. Connect your BSC-compatible wallet
+5. Start playing!
 
-**Partial shipment:** Large or multi-seller orders may ship in parts. Each shipment has its own tracking ID when split.
+### Can I create multiple accounts?
 
----
+Yes. You can create up to **10 accounts** using the same credentials, as per platform policy.
 
-## Shipping, delivery, and tracking
+### Can I change my team name?
 
-**Delivery time** shown at checkout is an **estimate** based on your pincode and seller location. Weather, holidays, or courier delays can change dates.
+Yes. You can change your team name **once**.
 
-**Track order:** **My orders → Track** shows courier name, tracking ID, and last scan. You may also get SMS with tracking links.
+### Is FansPlay secure?
 
-**Could not deliver:** If you were unavailable, the courier may retry or ask you to reschedule in the app. Repeated failed attempts may return the item to the seller; refunds follow return policy timelines.
+Yes. FansPlay is secure because:
 
-**Open box not accepted:** For some electronics, courier may ask you to accept only after verification policy shown on the product page.
+- All transactions are backed by blockchain technology
+- Systems are secure and transparent
+- Results are based on real-world match data only
 
----
+### Who controls my funds?
 
-## Cancellations
+You do. FansPlay does not control your funds. You maintain full control via your own wallet.
 
-**Before shipment:** Open **My orders → Cancel order** if the button is active. Refund goes to the **original payment method** (UPI/card/bank) unless the order used COD (nothing to refund).
+### Can results be manipulated or rigged?
 
-**After shipment:** You cannot cancel from the app; refuse at doorstep if policy allows, or **return** after delivery per category rules.
-
-**Seller-cancelled orders:** If we cancel (stock or compliance), you get a full refund automatically to the original source; timelines below apply.
-
----
-
-## Returns, replacements, and refunds
-
-Policies vary by **category** (e.g. innerwear, perishables may be non-returnable). Always read **Returns** on the product page before buying.
-
-**Typical window:** **7 days** from delivery for many items, **10–30 days** for some categories, unless marked **Non-returnable**.
-
-**How to start a return:** **My orders → Return / Replace** → choose reason → pick pickup slot if available. Keep product **unused**, with **tags**, **original packaging**, and **invoice** where required.
-
-**Refund modes:**
-
-- **Original payment method** — usual timeline **5–7 business days** after we receive and verify the item
-- **ShopNest wallet** — may be faster when you choose wallet credit at return initiation
-
-**Wrong or damaged item:** Choose **Wrong item delivered** or **Damaged** with photos within the allowed window. We may offer **replacement** or **refund** after verification.
-
-**Pickup failed:** If pickup is missed, reschedule from **My orders** or contact support with your return ID.
+No. Results cannot be manipulated. All outcomes are based on real-world match data. FansPlay is fully transparent.
 
 ---
 
-## Wallet and gift cards
+## Currencies & Deposits
 
-**ShopNest Wallet** stores refunds and promotional credits where applicable. Wallet balance can be used on eligible purchases at checkout.
+### Which currencies does FansPlay support?
 
-**Gift cards / vouchers:** Redeem in **Wallet or Payments** as per card terms. They may not be cash-reversible.
+FansPlay supports two currencies:
+
+- **USDT (BEP-20)** — for crypto deposits
+- **INR (Indian Rupees)** — via supported payment methods
+
+### Can I deposit using Bitcoin, ETH, or other cryptocurrencies?
+
+No. Currently, only **USDT (BEP-20)** is supported for crypto deposits. No other cryptocurrencies are accepted.
+
+### How do I deposit funds?
+
+**Crypto (USDT BEP-20):**
+1. Copy your deposit address from the app
+2. Send USDT using the BEP-20 network only
+3. Funds will be credited after blockchain confirmation
+
+**INR:**
+1. Go to Wallet → Deposit (Fiat)
+2. Complete the KYC process
+3. Once verified, select INR as your payment option
+4. Enter the amount and complete the payment
+5. Balance updates after successful processing
+
+### What is the minimum deposit amount?
+
+The minimum deposit starts from **$1 or equivalent INR** (may vary by contest).
+
+### Are there any deposit fees?
+
+No. FansPlay does **not** charge any ![1774442866426](image/ecommerce_support/1774442866426.png) fees.
+
+### My deposit is not showing. What should I do?
+
+**For Crypto:**
+- Check your transaction hash (TXID)
+- Ensure you used the correct network (BEP-20 only)
+- Contact support with your transaction details
+
+**For INR:**
+- Check your transaction or reference ID
+- Confirm payment status with your bank
+- Wait a few minutes for processing
+- Contact support if the issue persists
 
 ---
 
-## Payments, charges, and disputes
+## Withdrawals
 
-**Platform or convenience fee** (if any) is shown **before** you pay. Taxes (GST) appear as per regulations.
+### How do I withdraw funds?
 
-**Bank offers:** Cashback or discounts are between you and the bank/wallet partner; ShopNest only facilitates the payment. If cashback is missing, contact your bank with the transaction reference.
+You can withdraw using:
+- **USDT (BEP-20)** to your crypto wallet address
+- **INR** to your linked bank account
 
-**Charge dispute:** Share **order ID**, **payment date**, and **UPI/bank ref no.** via **Help** for investigation.
+Withdrawals are usually instant but may take up to 24 hours.
 
----
+Minimum withdrawal: **$5 or ₹500**
 
-## Privacy and data (customer-facing summary)
+### What is the minimum withdrawal amount?
 
-We use your data to **process orders**, **deliver**, **prevent fraud**, and **improve** the service. You can manage **marketing** preferences in **Profile → Notifications**. Full policy is linked in the app footer (**Privacy policy**).
+The minimum withdrawal amount is **$5 or ₹500**.
 
----
+### How long does a withdrawal take?
 
-## Contact and escalation
+Withdrawals are usually processed **instantly** but may take up to **24 hours** depending on system checks or technical conditions.
 
-**In-app chat:** **Help → Chat with us** (hours may vary; typical **9:00 – 21:00** IST on weekdays).
+### What if I entered a wrong wallet address?
 
-**Email:** **support@shopnest.example** — include **registered phone/email** and **order ID** for faster help.
+Crypto transactions are **irreversible**. FansPlay is not responsible for losses due to incorrect wallet details. Always double-check your wallet address before confirming.
 
-**Response time:** We aim to reply within **24–48 hours** on email; urgent delivery issues are prioritized when you contact us from the **order** screen.
+### Can I cancel a withdrawal?
 
-**Grievance:** For unresolved issues, use **Help → Escalate** and share your ticket ID.
-
----
-
-## Quick phrases (how customers ask)
-
-- *“Mera order kab aayega?”* — Check **Track order** for ETA; delays may happen during sales or bad weather.
-- *“Return kaise karun?”* — **My orders → Return** within the return window for your item category.
-- *“Refund kab milega?”* — After we receive the return, usually **5–7 business days** to bank/UPI; wallet may be quicker.
-- *“Payment fail ho gaya.”* — Retry; if money was debited, bank reversal typically takes **3–7 days**; contact support with reference if needed.
-- *“Wrong item mila.”* — Start **Return / Replace** with photos and order ID.
+Yes, but only **before it has been processed**. Contact support immediately if you need to cancel a withdrawal request.
 
 ---
 
-## Summary
+## Referral Program
 
-ShopNest helps you **shop**, **pay safely**, **track deliveries**, and **return or replace** items per policy. For anything not covered here, use **Help** in the app or email support with your **order ID**.
+### How does the referral program work?
+
+- Earn **5% commission** on platform fees from your referrals
+- Get a fixed **$0.5 reward** per successful referral
+- No limit on how many users you can refer
+- Referral income is **lifetime** — you keep earning as long as your referrals stay active
+
+### Is referral income really lifetime?
+
+Yes. You keep earning as long as your referrals remain active on the platform.
+
+### How do I refer someone?
+
+Share your unique referral link or referral code with others to start earning.
+
+### Is there a limit on how many people I can refer?
+
+No. There is no referral limit. Refer as many users as you want.

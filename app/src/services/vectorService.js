@@ -1,7 +1,6 @@
 import { qdrant } from "../config/qdrant.js";
 import { config } from "../config/env.js";
 import { embedText } from "./embeddingService.js";
-import { normalizeQueryForRag } from "../utils/ragRerank.js";
 
 const VECTOR_SIZE = 384;
 
@@ -38,7 +37,7 @@ export async function logCollectionStats() {
  * @returns {Promise<{ text: string, source: string, score: number }[]>}
  */
 export async function searchSimilar(query, limit = config.ragTopK) {
-  const q = normalizeQueryForRag(query).slice(0, 8000);
+  const q = String(query ?? "").trim().slice(0, 8000);
   const vector = await embedText(q);
   const res = await qdrant.search(config.qdrantCollection, {
     vector,

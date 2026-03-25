@@ -131,8 +131,8 @@ Order of operations:
 4. **Small-talk** short path (optional cached).
 5. **`LLM_MOCK`** — vector search + excerpt or generic help; no LLM HTTP.
 6. **RAG + LLM:**  
-   - `searchSimilar` → Qdrant top-K  
-   - `rerankHitsByQuery` — boosts certain `*.md` files by keyword heuristics  
+   - `searchSimilar` → embed trimmed user text → Qdrant top-K over **all** ingested chunks (no keyword rules)  
+   - `rerankHitsByQuery` — passthrough only  
    - If **no hits** → `no_retrieval` response (**not** written to cache)  
    - Else build **system prompt** (strict grounding + preserve names/attributions from snippets)  
    - `runChat` → LangChain `ChatOpenAI` against `LLM_BASE_URL`  

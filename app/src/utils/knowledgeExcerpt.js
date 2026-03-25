@@ -42,3 +42,24 @@ export function buildCleanKnowledgeExcerpt(hits, maxLen = 1100) {
 
   return trimToMaxLen(merged, maxLen);
 }
+
+/**
+ * Merge several top retrieval chunks for strict (no-LLM) answers — better coverage than a single chunk.
+ * @param {Array<{ text?: string }>} hits
+ * @param {number} maxLen
+ * @returns {string | null}
+ */
+export function buildMergedKnowledgeExcerpt(hits, maxLen = 2800) {
+  const valid = hits.filter((h) => h.text?.trim());
+  if (valid.length === 0) return null;
+
+  const parts = [];
+  for (const h of valid.slice(0, 6)) {
+    const t = stripMarkdownNoise(h.text);
+    if (t.replace(/\s/g, "").length > 20) parts.push(t);
+  }
+  const merged = parts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim();
+  if (merged.length < 30) return null;
+
+  return trimToMaxLen(merged, maxLen);
+}

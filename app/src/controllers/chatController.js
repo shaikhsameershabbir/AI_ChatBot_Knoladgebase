@@ -13,7 +13,7 @@ import {
   inferSmallTalkLanguage,
   isSmallTalkOnly,
 } from "../utils/chatSmallTalk.js";
-import { buildCleanKnowledgeExcerpt } from "../utils/knowledgeExcerpt.js";
+import { buildCleanKnowledgeExcerpt, buildMergedKnowledgeExcerpt } from "../utils/knowledgeExcerpt.js";
 import { looksLikeToolOrFunctionJson } from "../utils/llmReplySanitize.js";
 import { rerankHitsByQuery } from "../utils/ragRerank.js";
 
@@ -40,7 +40,7 @@ function genericMockOfferHelp() {
 
 function noRetrievalReply() {
   const a = config.applicationName;
-  return `I couldn't find that in our ${a} help content. Try asking about your cart, orders, delivery, returns, or payments — or contact support.`;
+  return `I couldn't find that in our ${a} help articles. Try rephrasing or contact support.`;
 }
 
 async function safeSearchSimilar(message) {
@@ -62,6 +62,7 @@ function buildSystemPrompt({ ragContext, languageHint, intent }) {
     "GROUNDING (mandatory):",
     "- You may ONLY use information that appears in the **Knowledge snippets** below.",
     "- **Keep exact facts:** Repeat names, attributions (e.g. who created a feature), numbers, and policy titles **exactly as written** in the snippets. Do not substitute generic wording (e.g. do not replace a named creator or product phrase with a vague description). You may fix grammar with minimal connecting words only.",
+    "- **Payment / deposit / withdrawal:** Do NOT list UPI, Google Pay, PhonePe, cards, net banking, wallets, or other rails unless those exact options appear in the snippets. If the snippets describe crypto (e.g. USDT) and/or INR steps, only describe what is written there.",
     "- Do not copy raw markdown headings, curl, or JSON unless the user asks for an example.",
     "- Do NOT invent facts: no made-up CPU/memory/network percentages, no generic “industry standard” claims, no “we cannot disclose” excuses, no filler about “cutting-edge AI” unless those exact ideas appear in the snippets.",
     "- Do NOT treat older or alternative setups in the snippets (e.g. example vLLM ports) as the live system unless the snippets clearly label them as **this** deployment. Prefer the section titled **Authoritative runtime reference** when it appears.",
@@ -176,6 +177,31 @@ export async function postChat(req, res) {
       .filter((h) => h.text)
       .map((h, i) => `[${i + 1}] (${h.source}, score=${h.score.toFixed(3)})\n${h.text}`)
       .join("\n\n");
+
+    /** Answers come only from retrieved text — no LLM synthesis (avoids invented payment methods etc.). */
+    if (config.ragStrictExcerpt) {
+      const excerpt =
+        buildMergedKnowledgeExcerpt(hits) ?? buildCleanKnowledgeExcerpt(hits);
+      if (!excerpt) {
+        return res.json({
+          reply: noRetrievalReply(),
+          cached: false,
+          sources,
+          language: detectLanguageLabel(message),
+          intent: classifyIntent(message),
+          finishReason: "no_retrieval",
+        });
+      }
+      if (excerpt.length < 4000) await setCachedReplySafe(message, excerpt);
+      return res.json({
+        reply: excerpt,
+        cached: false,
+        sources,
+        language: detectLanguageLabel(message),
+        intent: classifyIntent(message),
+        finishReason: "strict_knowledge_excerpt",
+      });
+    }
 
     const languageHint = detectLanguageLabel(message);
     const intent = classifyIntent(message);

@@ -7,7 +7,7 @@ function normalizeMessage(message) {
 }
 
 /** Bump when cached answers must be dropped (e.g. after ingest / prompt changes). */
-const CACHE_KEY_VERSION = "v3";
+const CACHE_KEY_VERSION = "v4";
 
 export function cacheKey(message) {
   const h = crypto.createHash("sha256").update(normalizeMessage(message)).digest("hex");

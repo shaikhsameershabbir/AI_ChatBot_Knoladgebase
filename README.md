@@ -130,7 +130,7 @@ Set **`LLM_BASE_URL`**, **`LLM_MODEL`**, and **`LLM_API_KEY`** (or **`OPENAI_API
   docker compose exec redis redis-cli FLUSHDB
   ```
 
-Retrieval uses **embeddings** (not keyword rules). Query **reranking** helps when the question clearly mentions **architecture / project / stack** vs product-specific topics.
+Retrieval uses **embeddings** over the **entire** ingested knowledge index (no keyword → file rules).
 
 ## Environment variables
 
